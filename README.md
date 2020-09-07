@@ -1,9 +1,5 @@
 # terraform-aws-cloudfront-static-site
 
-[![open-issues](https://img.shields.io/github/issues-raw/insight-infrastructure/terraform-aws-cloudfront-static-site
-?style=for-the-badge)](https://github.com/insight-infrastructure/terraform-aws-cloudfront-static-site/issues)
-[![open-pr](https://img.shields.io/github/issues-pr-raw/insight-infrastructure/terraform-aws-cloudfront-static-site?style=for-the-badge)](https://github.com/insight-infrastructure/terraform-aws-cloudfront-static-site/pulls)
-
 ## Features
 
 This module sets up a static website on AWS. It uses two S3 buckets, one for the main static site expecting an index

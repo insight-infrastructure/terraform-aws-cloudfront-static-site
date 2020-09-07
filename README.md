@@ -1,7 +1,8 @@
 # terraform-aws-cloudfront-static-site
 
-[![open-issues](https://img.shields.io/github/issues-raw/robcxyz/terraform-aws-cloudfront-static-site?style=for-the-badge)](https://github.com/robcxyz/terraform-aws-cloudfront-static-site/issues)
-[![open-pr](https://img.shields.io/github/issues-pr-raw/robcxyz/terraform-aws-cloudfront-static-site?style=for-the-badge)](https://github.com/robcxyz/terraform-aws-cloudfront-static-site/pulls)
+[![open-issues](https://img.shields.io/github/issues-raw/insight-infrastructure/terraform-aws-cloudfront-static-site
+?style=for-the-badge)](https://github.com/insight-infrastructure/terraform-aws-cloudfront-static-site/issues)
+[![open-pr](https://img.shields.io/github/issues-pr-raw/insight-infrastructure/terraform-aws-cloudfront-static-site?style=for-the-badge)](https://github.com/insight-infrastructure/terraform-aws-cloudfront-static-site/pulls)
 
 ## Features
 
@@ -16,7 +17,7 @@ For Terraform v0.12.0+
 ## Usage
 
 **Root Domain** 
-```hcl-terraform
+```hcl
 module "this" {
   source = "github.com/robcxyz/terraform-aws-cloudfront-static-site"
   root_domain_name = "example.com"
@@ -24,7 +25,7 @@ module "this" {
 ```
 
 **Subbomain** 
-```hcl-terraform
+```hcl
 module "this" {
   source = "github.com/robcxyz/terraform-aws-cloudfront-static-site"
   root_domain_name = "example.com"

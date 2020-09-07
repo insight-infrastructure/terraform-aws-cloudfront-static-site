@@ -5,7 +5,9 @@
 
 ## Features
 
-This module...
+This module sets up a static website on AWS. It uses two S3 buckets, one for the main static site expecting an index
+.html and another simply redirecting www.yourdomain.com to yourdomain.com.  The website itself is distributed with
+ cloudfront. 
 
 ## Terraform Versions
 
@@ -13,12 +15,24 @@ For Terraform v0.12.0+
 
 ## Usage
 
-```
+**Root Domain** 
+```hcl-terraform
 module "this" {
-    source = "github.com/robcxyz/terraform-aws-cloudfront-static-site"
-
+  source = "github.com/robcxyz/terraform-aws-cloudfront-static-site"
+  root_domain_name = "example.com"
 }
 ```
+
+**Subbomain** 
+```hcl-terraform
+module "this" {
+  source = "github.com/robcxyz/terraform-aws-cloudfront-static-site"
+  root_domain_name = "example.com"
+  subdomain = "blog"
+}
+```
+
+
 ## Examples
 
 - [defaults](https://github.com/robcxyz/terraform-aws-cloudfront-static-site/tree/master/examples/defaults)
@@ -37,10 +51,10 @@ No issue is creating limit on this module.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:-----:|
-| root\_domain\_name | n/a | `string` | n/a | yes |
-| s3\_bucket\_name | n/a | `string` | `""` | no |
-| subdomain | n/a | `string` | `""` | no |
-| tags | n/a | `map(string)` | `{}` | no |
+| root\_domain\_name | As name - example.com | `string` | n/a | yes |
+| s3\_bucket\_name | S3 bucket name - leave blank for root domain name | `string` | `""` | no |
+| subdomain | As name - blog in blog.example.com | `string` | `""` | no |
+| tags | Additional tags to associate with resources | `map(string)` | `{}` | no |
 
 ## Outputs
 

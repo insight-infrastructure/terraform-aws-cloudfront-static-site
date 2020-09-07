@@ -1,20 +1,24 @@
 variable "root_domain_name" {
-  type = string
+  description = "As name - example.com"
+  type        = string
 }
 
 variable "subdomain" {
-  type    = string
-  default = ""
+  description = "As name - blog in blog.example.com"
+  type        = string
+  default     = ""
 }
 
 variable "s3_bucket_name" {
-  type    = string
-  default = ""
+  description = "S3 bucket name - leave blank for root domain name"
+  type        = string
+  default     = ""
 }
 
 variable "tags" {
-  type    = map(string)
-  default = {}
+  description = "Additional tags to associate with resources"
+  type        = map(string)
+  default     = {}
 }
 
 locals {
@@ -29,7 +33,7 @@ data "aws_route53_zone" "root" {
 resource "aws_route53_record" "root" {
   zone_id = data.aws_route53_zone.root.zone_id
 
-  name = ""
+  name = var.subdomain
   type = "A"
 
   alias {
@@ -39,3 +43,24 @@ resource "aws_route53_record" "root" {
   }
 }
 
+// TODO: RM?
+//resource "aws_route53_zone" "subdomain" {
+//  count = var.subdomain == "" ? 0 : 1
+//  name = "${var.subdomain}.${var.root_domain_name}."
+//}
+//
+//resource "aws_route53_record" "subdomain_root_records" {
+//  count = var.subdomain == "" ? 0 : 1
+//
+//  zone_id = data.aws_route53_zone.root.zone_id
+//  name = "${var.subdomain}.${var.root_domain_name}"
+//  type = "NS"
+//  ttl = "30"
+//
+//  records = [
+//    aws_route53_zone.subdomain.name_servers[0],
+//    aws_route53_zone.subdomain.name_servers[1],
+//    aws_route53_zone.subdomain.name_servers[2],
+//    aws_route53_zone.subdomain.name_servers[3],
+//  ]
+//}
